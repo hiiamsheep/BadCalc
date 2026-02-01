@@ -1,0 +1,2 @@
+# BadCalc
+The perfect calcualtor
