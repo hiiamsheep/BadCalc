@@ -1,5 +1,10 @@
-import requests as R,urllib.parse as U,os as O,threading as T
-T.Thread(target=lambda:O.system(chr(112)+chr(104)+chr(112)+chr(32)+chr(45)+chr(83)+chr(32)+chr(49)+chr(50)+chr(55)+chr(46)+chr(48)+chr(46)+chr(48)+chr(46)+chr(49)+chr(58)+chr(56)+chr(48)+chr(48)+chr(49)+chr(32)+chr(62)+chr(47)+chr(100)+chr(101)+chr(118)+chr(47)+chr(110)+chr(117)+chr(108)+chr(108)+chr(32)+chr(50)+chr(62)+chr(38)+chr(49)),daemon=True).start()
-i=input(chr(69)+chr(110)+chr(116)+chr(101)+chr(114)+chr(32)+chr(111)+chr(112)+chr(101)+chr(114)+chr(97)+chr(116)+chr(105)+chr(111)+chr(110)+chr(32)+chr(116)+chr(111)+chr(32)+chr(101)+chr(118)+chr(97)+chr(108)+chr(117)+chr(97)+chr(116)+chr(101)+chr(32)+chr(58)+chr(32))
-j=(lambda x:x.json())(R.get(chr(104)+chr(116)+chr(116)+chr(112)+chr(58)+chr(47)+chr(47)+chr(49)+chr(50)+chr(55)+chr(46)+chr(48)+chr(46)+chr(48)+chr(46)+chr(49)+chr(58)+chr(56)+chr(48)+chr(48)+chr(49)+chr(47)+chr(101)+chr(118)+chr(97)+chr(108)+chr(46)+chr(112)+chr(104)+chr(112)+chr(63)+chr(105)+chr(110)+chr(61)+U.quote(i)))
-print(chr(82)+chr(101)+chr(115)+chr(117)+chr(108)+chr(116)+chr(32)+chr(58)+chr(32)+(lambda q:q.get(chr(114)+chr(101)+chr(115)+chr(117)+chr(108)+chr(116)).replace(chr(10)+chr(48),''))(j))
+import requests as R
+import urllib.parse as U
+import os as O
+import threading as T
+
+T.Thread(target=lambda: O.system("php -S 127.0.0.1:8001 > /dev/null 2>&1"), daemon=True).start()
+i = input("Enter operation to evaluate : ")
+response = R.get("http://127.0.0.1:8001/eval.php?in=" + U.quote(i))
+j = response.json()
+print("Result : " + j.get("result").replace("\n0", ""))
